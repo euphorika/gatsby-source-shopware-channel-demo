@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -6,6 +8,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-shopware-channel`,
+      options: {
+        host: 'http://localhost:8000',
+        accessKey: process.env.SHOPWARE_ACCESS_KEY,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
